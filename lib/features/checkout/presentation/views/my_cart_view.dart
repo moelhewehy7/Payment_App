@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import 'package:payment_app/core/utils/app_styels.dart';
+import 'package:payment_app/features/checkout/presentation/views/payment_details_view.dart';
+import 'package:payment_app/features/checkout/presentation/views/widgets/buttons.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/total_price.dart';
 
 import 'widgets/oreder_info.dart';
@@ -23,12 +23,11 @@ class MyCartView extends StatelessWidget {
           ),
           centerTitle: true),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        padding: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
         child: Column(children: [
           Expanded(
             child: Image.asset(
               'assets/images/basket.png',
-              fit: BoxFit.fitWidth,
             ),
           ),
           const OrederInfo(
@@ -56,21 +55,15 @@ class MyCartView extends StatelessWidget {
             value: r'$50.97',
           ),
           const SizedBox(
-            height: 17,
+            height: 16,
           ),
-          SizedBox(
-            width: double.infinity,
-            height: 50,
-            child: FilledButton(
-              onPressed: () {},
-              child: const Text(
-                "Complete Payment",
-                style: AppStyles.styleMedium18,
-              ),
-              style: FilledButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15))),
-            ),
+          CustomFilledButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PaymetDetails()));
+            },
           )
         ]),
       ),
