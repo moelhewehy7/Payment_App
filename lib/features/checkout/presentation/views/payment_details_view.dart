@@ -23,6 +23,7 @@ class _PaymetDetailsState extends State<PaymetDetails> {
     "assets/images/apple-pay.webp"
   ];
   int selectedIndex = 0;
+  final GlobalKey<FormState> formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,20 +40,37 @@ class _PaymetDetailsState extends State<PaymetDetails> {
           child: CustomScrollView(
             slivers: [
               SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    paymentMethods(),
-                    CreditCard(),
-                  ],
-                ),
-              ),
+                  child: Column(
+                children: [
+                  paymentMethods(),
+                  CreditCard(
+                    formKey: formKey,
+                  ),
+                  SizedBox(
+                    height: 200,
+                  ),
+                  SizedBox(
+                    height: 200,
+                  ),
+                  SizedBox(
+                    height: 200,
+                  ),
+                  SizedBox(
+                    height: 200,
+                  ),
+                ],
+              )),
             ],
           )),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
         child: CustomFilledButton(
           onPressed: () {
-            // Button action
+            if (formKey.currentState!.validate()) {
+              formKey.currentState!.save();
+            } else {
+              debugPrint('error');
+            }
           },
         ),
       ),
