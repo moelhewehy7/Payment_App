@@ -14,6 +14,7 @@ class MyCartView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+          backgroundColor: Colors.white,
           elevation: 0,
           leading:
               IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back)),

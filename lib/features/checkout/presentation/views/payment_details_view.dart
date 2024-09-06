@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/flutter_credit_card.dart';
 
 import 'package:payment_app/core/utils/app_styels.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/payment_item.dart';
+
+import 'widgets/buttons.dart';
+import 'widgets/custom_credit_card.dart';
 
 class PaymetDetails extends StatefulWidget {
   const PaymetDetails({
@@ -14,45 +18,67 @@ class PaymetDetails extends StatefulWidget {
 
 class _PaymetDetailsState extends State<PaymetDetails> {
   List<String> items = [
-    "assets/images/card.jpeg",
+    "assets/images/visaa.jpg",
     "assets/images/paypal.png",
-    "assets/images/apple_pay.png"
+    "assets/images/apple-pay.webp"
   ];
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+          backgroundColor: Colors.white,
           centerTitle: true,
           title: const Text(
             'Payment Details',
             style: AppStyles.styleMedium25,
           )),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Column(
-          children: [
-            Row(
-              children: items
-                  .map((e) => GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedIndex = items.indexOf(e);
-                          });
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 15),
-                          child: PaymentItem(
-                            isActive: selectedIndex == items.indexOf(e),
-                            image: e,
-                          ),
-                        ),
-                      ))
-                  .toList(),
-            )
-          ],
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    paymentMethods(),
+                    CreditCard(),
+                  ],
+                ),
+              ),
+            ],
+          )),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
+        child: CustomFilledButton(
+          onPressed: () {
+            // Button action
+          },
         ),
       ),
+    );
+  }
+
+  Row paymentMethods() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: items
+          .map((e) => GestureDetector(
+                onTap: () {
+                  setState(() {
+                    selectedIndex = items.indexOf(e);
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 15),
+                  child: PaymentItem(
+                    isActive: selectedIndex == items.indexOf(e),
+                    image: e,
+                  ),
+                ),
+              ))
+          .toList(),
     );
   }
 }

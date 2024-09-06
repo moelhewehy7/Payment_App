@@ -30,12 +30,14 @@ class PaymentItem extends StatelessWidget {
                 offset: Offset(0, 0))
           ]),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+        width: 103,
+        height: 62,
+        padding: EdgeInsets.symmetric(horizontal: 18, vertical: 5),
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(15)),
         child: Image.asset(
           image,
-          fit: BoxFit.contain,
+          fit: BoxFit.scaleDown,
         ),
       ),
     );
