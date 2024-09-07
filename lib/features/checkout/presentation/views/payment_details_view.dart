@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 
 import 'package:payment_app/core/utils/app_styels.dart';
+import 'package:payment_app/features/checkout/presentation/views/thank_you_view.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/payment_item.dart';
 
 import 'widgets/buttons.dart';
@@ -46,18 +47,6 @@ class _PaymetDetailsState extends State<PaymetDetails> {
                   CreditCard(
                     formKey: formKey,
                   ),
-                  SizedBox(
-                    height: 200,
-                  ),
-                  SizedBox(
-                    height: 200,
-                  ),
-                  SizedBox(
-                    height: 200,
-                  ),
-                  SizedBox(
-                    height: 200,
-                  ),
                 ],
               )),
             ],
@@ -69,6 +58,9 @@ class _PaymetDetailsState extends State<PaymetDetails> {
             if (formKey.currentState!.validate()) {
               formKey.currentState!.save();
             } else {
+              Navigator.push(context, MaterialPageRoute(builder: (_) {
+                return const ThankYouView();
+              }));
               debugPrint('error');
             }
           },
