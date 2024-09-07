@@ -48,7 +48,7 @@ class MyCartView extends StatelessWidget {
             child: Divider(
               thickness: 2,
               height: 34,
-              color: Color(0xFFbC7C7C7),
+              color: Color.fromARGB(250, 199, 199, 199),
             ),
           ),
           const TotalPrice(

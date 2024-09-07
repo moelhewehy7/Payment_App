@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:payment_app/core/utils/app_styels.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/circle_header.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/dashed_divider.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/thank_you_paymeninfo.dart';
@@ -14,40 +13,40 @@ class ThankYouView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        clipBehavior: Clip.none,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Transform.translate(
-          offset: Offset(0, -10),
+      body: Transform.translate(
+        offset: const Offset(0, -16),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
           child: Stack(
             clipBehavior: Clip.none,
             children: [
               Container(
                 width: double.infinity,
                 decoration: ShapeDecoration(
-                  color: Color(0xffededed),
+                  color: const Color(0xffededed),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
                 ),
-                child: ThankYouPaymentInfo(),
+                child: const ThankYouPaymentInfo(),
               ),
-              Positioned(top: -40, right: 0, left: 0, child: CircleHeader()),
+              const Positioned(
+                  top: -50, right: 0, left: 0, child: CircleHeader()),
               Positioned(
                 right: -26,
                 left: -26,
-                bottom: MediaQuery.of(context).size.height * 0.22 + 20,
-                child: DashedDivider(),
+                bottom: MediaQuery.of(context).size.height * 0.2 + 20,
+                child: const DashedDivider(),
               ),
               Positioned(
                   left: -20,
-                  bottom: MediaQuery.of(context).size.height * 0.22,
-                  child: CustomCircleAvatar()),
+                  bottom: MediaQuery.of(context).size.height * 0.2,
+                  child: const CustomCircleAvatar()),
               Positioned(
                   right: -20,
-                  bottom: MediaQuery.of(context).size.height * 0.22,
-                  child: CustomCircleAvatar()),
+                  bottom: MediaQuery.of(context).size.height * 0.2,
+                  child: const CustomCircleAvatar()),
             ],
           ),
         ),
