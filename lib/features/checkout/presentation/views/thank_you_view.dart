@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:payment_app/core/utils/app_styels.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/circle_header.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/dashed_divider.dart';
+import 'package:payment_app/features/checkout/presentation/views/widgets/thank_you_paymeninfo.dart';
 
 import 'widgets/custom_circle_avatar.dart';
 
@@ -23,11 +25,14 @@ class ThankYouView extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               Container(
-                  decoration: ShapeDecoration(
-                color: Color(0xffededed),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-              )),
+                width: double.infinity,
+                decoration: ShapeDecoration(
+                  color: Color(0xffededed),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+                child: ThankYouPaymentInfo(),
+              ),
               Positioned(top: -40, right: 0, left: 0, child: CircleHeader()),
               Positioned(
                 right: -26,
