@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:payment_app/core/utils/app_styels.dart';
 
 class CustomFilledButton extends StatelessWidget {
-  const CustomFilledButton({super.key, required this.onPressed});
+  const CustomFilledButton(
+      {super.key, required this.onPressed, required this.text});
   final void Function()? onPressed;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -14,8 +16,8 @@ class CustomFilledButton extends StatelessWidget {
         style: FilledButton.styleFrom(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15))),
-        child: const Text(
-          "Complete Payment",
+        child: Text(
+          text,
           style: AppStyles.styleMedium18,
         ),
       ),

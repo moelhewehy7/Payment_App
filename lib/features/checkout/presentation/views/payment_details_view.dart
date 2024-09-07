@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_credit_card/flutter_credit_card.dart';
-
 import 'package:payment_app/core/utils/app_styels.dart';
 import 'package:payment_app/features/checkout/presentation/views/thank_you_view.dart';
-import 'package:payment_app/features/checkout/presentation/views/widgets/payment_item.dart';
-
+import 'package:payment_app/features/checkout/presentation/views/widgets/payment_methods.dart';
 import 'widgets/buttons.dart';
 import 'widgets/custom_credit_card.dart';
 
@@ -18,12 +15,6 @@ class PaymetDetails extends StatefulWidget {
 }
 
 class _PaymetDetailsState extends State<PaymetDetails> {
-  List<String> items = [
-    "assets/images/visaa.jpg",
-    "assets/images/paypal.png",
-    "assets/images/apple-pay.webp"
-  ];
-  int selectedIndex = 0;
   final GlobalKey<FormState> formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
@@ -43,7 +34,7 @@ class _PaymetDetailsState extends State<PaymetDetails> {
               SliverToBoxAdapter(
                   child: Column(
                 children: [
-                  paymentMethods(),
+                  // PaymentMethods(),
                   CreditCard(
                     formKey: formKey,
                   ),
@@ -54,6 +45,7 @@ class _PaymetDetailsState extends State<PaymetDetails> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 20),
         child: CustomFilledButton(
+          text: "Pay",
           onPressed: () {
             if (formKey.currentState!.validate()) {
               formKey.currentState!.save();
@@ -66,29 +58,6 @@ class _PaymetDetailsState extends State<PaymetDetails> {
           },
         ),
       ),
-    );
-  }
-
-  Row paymentMethods() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: items
-          .map((e) => GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedIndex = items.indexOf(e);
-                  });
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 15),
-                  child: PaymentItem(
-                    isActive: selectedIndex == items.indexOf(e),
-                    image: e,
-                  ),
-                ),
-              ))
-          .toList(),
     );
   }
 }

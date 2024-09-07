@@ -7,7 +7,7 @@ class CustomCircleAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
+    return const CircleAvatar(
       backgroundColor: Colors.white,
       radius: 20,
     );
