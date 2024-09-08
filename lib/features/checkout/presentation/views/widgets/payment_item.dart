@@ -14,8 +14,6 @@ class PaymentItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 600),
-      width: 103,
-      height: 62,
       decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
               side: BorderSide(
@@ -34,7 +32,7 @@ class PaymentItem extends StatelessWidget {
                 offset: const Offset(0, 0))
           ]),
       child: Container(
-        width: 103,
+        width: 90,
         height: 62,
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 5),
         decoration: BoxDecoration(
