@@ -13,41 +13,45 @@ class ThankYouView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.transparent,
       ),
       body: Transform.translate(
         offset: const Offset(0, -16),
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Container(
-                width: double.infinity,
-                decoration: ShapeDecoration(
-                  color: const Color(0xffededed),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
+        child: SingleChildScrollView(
+          clipBehavior: Clip.none,
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Container(
+                  width: double.infinity,
+                  decoration: ShapeDecoration(
+                    color: const Color(0xffededed),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  child: const ThankYouPaymentInfo(),
                 ),
-                child: const ThankYouPaymentInfo(),
-              ),
-              const Positioned(
-                  top: -50, right: 0, left: 0, child: CircleHeader()),
-              Positioned(
-                right: -26,
-                left: -26,
-                bottom: MediaQuery.of(context).size.height * 0.2 + 20,
-                child: const DashedDivider(),
-              ),
-              Positioned(
-                  left: -20,
-                  bottom: MediaQuery.of(context).size.height * 0.2,
-                  child: const CustomCircleAvatar()),
-              Positioned(
-                  right: -20,
-                  bottom: MediaQuery.of(context).size.height * 0.2,
-                  child: const CustomCircleAvatar()),
-            ],
+                const Positioned(
+                    top: -50, right: 0, left: 0, child: CircleHeader()),
+                Positioned(
+                  right: -26,
+                  left: -26,
+                  bottom: MediaQuery.of(context).size.height * 0.2 + 20,
+                  child: const DashedDivider(),
+                ),
+                Positioned(
+                    left: -20,
+                    bottom: MediaQuery.of(context).size.height * 0.2,
+                    child: const CustomCircleAvatar()),
+                Positioned(
+                    right: -20,
+                    bottom: MediaQuery.of(context).size.height * 0.2,
+                    child: const CustomCircleAvatar()),
+              ],
+            ),
           ),
         ),
       ),

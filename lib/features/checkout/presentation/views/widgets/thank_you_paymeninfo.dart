@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:payment_app/core/utils/app_styels.dart';
+import 'package:payment_app/features/checkout/presentation/views/widgets/card_info_widget.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/payment_info_item.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/total_price.dart';
 
@@ -59,7 +60,7 @@ class ThankYouPaymentInfo extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15))),
               child: const CardInfoWidget()),
-          const Spacer(),
+          const SizedBox(height: 100),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -90,37 +91,6 @@ class ThankYouPaymentInfo extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class CardInfoWidget extends StatelessWidget {
-  const CardInfoWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Brand(Brands.mastercard_logo),
-        const SizedBox(
-          width: 23,
-        ),
-        const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Credit Card",
-              style: AppStyles.styleRegular18,
-            ),
-            Text(
-              "Mastercard **78",
-              style: AppStyles.styleRegular18,
-            )
-          ],
-        )
-      ],
     );
   }
 }
