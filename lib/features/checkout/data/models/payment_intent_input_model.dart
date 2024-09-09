@@ -1,5 +1,5 @@
 class PaymentIntentInputModel {
-  final String amount;
+  final int amount;
   final String currency;
   PaymentIntentInputModel({
     required this.amount,
@@ -7,7 +7,7 @@ class PaymentIntentInputModel {
   });
 
   Map<String, dynamic> toJson() => {
-        'amount': amount,
+        'amount': amount * 100,
         "currency": currency,
       };
 }
