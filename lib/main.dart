@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:payment_app/features/checkout/presentation/views/my_cart_view.dart';
 
 void main() {
@@ -18,3 +19,25 @@ class PaymentApp extends StatelessWidget {
         home: const MyCartView());
   }
 }
+
+// Future<void> initPaymentSheet() async {
+//   try {
+//     // 2. initialize the payment sheet
+//     await Stripe.instance.initPaymentSheet(
+//       paymentSheetParameters: SetupPaymentSheetParameters(
+//         // Main params
+//         merchantDisplayName: 'Flutter Stripe Store Demo',
+//         paymentIntentClientSecret: data['paymentIntent'],
+//         // style: ThemeMode.dark,
+//       ),
+//     );
+//     setState(() {
+//       _ready = true;
+//     });
+//   } catch (e) {
+//     ScaffoldMessenger.of(context).showSnackBar(
+//       SnackBar(content: Text('Error: $e')),
+//     );
+//     rethrow;
+//   }
+// }
