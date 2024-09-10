@@ -31,6 +31,7 @@ class CustomConsumerButton extends StatelessWidget {
         onPressed: () {
           PaymentIntentInputModel paymentIntentInputModel =
               PaymentIntentInputModel(
+            customerId: "cus_QpE0cG2tcIV9Wk",
             amount: 3,
             currency: "usd",
           );
