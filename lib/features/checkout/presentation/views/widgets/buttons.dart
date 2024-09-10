@@ -17,9 +17,9 @@ class CustomFilledButton extends StatelessWidget {
       width: double.infinity,
       height: 55,
       child: isLoading
-          ? SpinKitFadingCircle(
+          ? const SpinKitFadingCircle(
               size: 30,
-              color: const Color(0xFF327534),
+              color: Color(0xFF327534),
             )
           : FilledButton(
               onPressed: onPressed,

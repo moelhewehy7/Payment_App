@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:payment_app/core/utils/errors/failure.dart';
 import 'package:payment_app/core/utils/stripe_service.dart';
 import 'package:payment_app/features/checkout/data/models/payment_intent_input_model.dart';
@@ -14,7 +15,16 @@ class CheckoutRepoImpl extends CheckoutRepo {
           paymentIntentInputModel: paymentIntentInputModel);
       return right(null);
     } on Exception catch (e) {
-      return left(ServerFailure(errMessage: e.toString()));
+      if (e is DioException) {
+        if (e.response != null) {
+          return left(ServerFailure.fromResponse(
+              e.response!.statusCode, e.response!.data));
+        } else {
+          return left(ServerFailure.fromDioException(e));
+        }
+      } else {
+        return left(ServerFailure(errMessage: "Please try again later"));
+      }
     }
   }
 }

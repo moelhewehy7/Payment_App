@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payment_app/core/utils/app_styels.dart';
 import 'package:payment_app/features/checkout/presentation/views/thank_you_view.dart';
-import 'package:payment_app/features/checkout/presentation/views/widgets/payment_methods.dart';
 import 'widgets/buttons.dart';
 import 'widgets/custom_credit_card.dart';
 
