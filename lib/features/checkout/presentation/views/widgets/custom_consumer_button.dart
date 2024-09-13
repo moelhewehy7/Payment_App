@@ -3,9 +3,14 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
+import 'package:payment_app/core/utils/api_keys.dart';
+import 'package:payment_app/features/checkout/data/models/amount_model/details.dart';
+import 'package:payment_app/features/checkout/data/models/item_list_model/item.dart';
+import 'package:payment_app/features/checkout/data/models/item_list_model/item_list_model.dart';
 import 'package:payment_app/features/checkout/presentation/manager/cubits/cubit/payment_cubit.dart';
 import 'package:payment_app/features/checkout/presentation/views/thank_you_view.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/buttons.dart';
+import '../../../data/models/amount_model/amount_model.dart';
 import '../../../data/models/payment_intent_input_model.dart';
 
 class CustomConsumerButton extends StatelessWidget {
@@ -40,55 +45,26 @@ class CustomConsumerButton extends StatelessWidget {
           // );
           // BlocProvider.of<PaymentCubit>(context)
           //     .makePayment(paymentIntentInputModel: paymentIntentInputModel);
+
+          Details details =
+              Details(subtotal: "100", shipping: "0", shippingDiscount: 0);
+          AmountModel amountModel =
+              AmountModel(total: "100", currency: "USD", details: details);
+          List<Item> items = [
+            Item(name: "Apple", quantity: 4, price: "10", currency: "USD"),
+            Item(name: "Pineapple", quantity: 5, price: "12", currency: "USD"),
+          ];
+          ItemListModel itemListModel = ItemListModel(items: items);
           Navigator.of(context).push(MaterialPageRoute(
             builder: (BuildContext context) => PaypalCheckoutView(
               sandboxMode: true,
-              clientId: "YOUR CLIENT ID",
-              secretKey: "YOUR SECRET KEY",
-              transactions: const [
+              clientId: ApiKeys.clientId,
+              secretKey: ApiKeys.payPalSecret,
+              transactions: [
                 {
-                  "amount": {
-                    "total": "100",
-                    "currency": "USD",
-                    "details": {
-                      "subtotal": "100",
-                      "shipping": "0",
-                      "shipping_discount": 0
-                    }
-                  },
+                  "amount": amountModel.toJson(),
                   "description": "The payment transaction description.",
-                  // "payment_options": {
-                  //   "allowed_payment_method":
-                  //       "INSTANT_FUNDING_SOURCE"
-                  // },
-                  "item_list": {
-                    "items": [
-                      {
-                        "name": "Apple",
-                        "quantity": 4,
-                        "price": "10",
-                        "currency": "USD"
-                      },
-                      {
-                        "name": "Pineapple",
-                        "quantity": 5,
-                        "price": "12",
-                        "currency": "USD"
-                      }
-                    ]
-
-                    // Optional
-                    //   "shipping_address": {
-                    //     "recipient_name": "Tharwat samy",
-                    //     "line1": "tharwat",
-                    //     "line2": "",
-                    //     "city": "tharwat",
-                    //     "country_code": "EG",
-                    //     "postal_code": "25025",
-                    //     "phone": "+00000000",
-                    //     "state": "ALex"
-                    //  },
-                  }
+                  "item_list": itemListModel.toJson()
                 }
               ],
               note: "Contact us for any questions on your order.",
